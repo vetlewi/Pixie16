@@ -53,7 +53,7 @@ target_include_directories(Pixie16
 		${CMAKE_CURRENT_SOURCE_DIR}/include/plx
 		${CMAKE_CURRENT_SOURCE_DIR}/src/Pixie16)
 
-target_compile_definitions(Pixie16 PUBLIC PLX_LITTLE_ENDIAN PCI_CODE PLX_LINUX)
+target_compile_definitions(Pixie16 PUBLIC PLX_LITTLE_ENDIAN PLX_64BIT GCC PCI_CODE PLX_LINUX)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 	target_link_libraries(Pixie16 PUBLIC dl m)
 else()
@@ -62,7 +62,6 @@ endif()
 
 
 set_property(TARGET Pixie16 PROPERTY POSITION_INDEPENDENT_CODE ON)
-#add_library(Pixie16::Pixie16 ALIAS Pixie16)
 
 # ---- Create an installable target ----
 # this allows users to install and find the library via `find_package()`.
