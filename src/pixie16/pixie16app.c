@@ -49,7 +49,7 @@
 
 #include "pixie16app_globals.h"
 #include "pixie16sys_export.h"
-#include "pixie16app_export.h"
+#include "Pixie16/pixie16app_export.h"
 #include "pixie16app_common.h"
 #include "xia_common.h"
 
@@ -2419,7 +2419,7 @@ PIXIE16APP_EXPORT int PIXIE16APP_API Pixie16BLcutFinder (
 
 PIXIE16APP_EXPORT int PIXIE16APP_API Pixie16TauFinder (
 	unsigned short ModNum,   // Pixie module number
-	double         *Tau )    // 16 returned Tau values, in µs
+	double         *Tau )    // 16 returned Tau values, in ï¿½s
 {
 
 	char           ErrMSG[MAX_ERRMSG_LENGTH];

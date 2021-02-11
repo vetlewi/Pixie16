@@ -50,7 +50,7 @@
 
 #include "pixie16app_globals.h"
 #include "pixie16sys_export.h"
-#include "pixie16app_export.h"
+#include "Pixie16/pixie16app_export.h"
 #include "pixie16app_common.h"
 #include "xia_common.h"
 

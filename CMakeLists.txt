@@ -47,15 +47,22 @@ add_library(Pixie16 STATIC
 target_include_directories(Pixie16
 	PUBLIC
 		$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-		$<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>)
+		$<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+	PRIVATE
+		${CMAKE_CURRENT_SOURCE_DIR}/include/Pixie16
+		${CMAKE_CURRENT_SOURCE_DIR}/include/plx
+		${CMAKE_CURRENT_SOURCE_DIR}/src/Pixie16)
 
 target_compile_definitions(Pixie16 PUBLIC PLX_LITTLE_ENDIAN PCI_CODE PLX_LINUX)
-
-target_link_libraries(Pixie16 PUBLIC ldl lrt lm)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	target_link_libraries(Pixie16 PUBLIC dl m)
+else()
+	target_link_libraries(Pixie16 PUBLIC dl rt m)
+endif()
 
 
 set_property(TARGET Pixie16 PROPERTY POSITION_INDEPENDENT_CODE ON)
-add_library(Pixie16::Pixie16 ALIAS Pixie16)
+#add_library(Pixie16::Pixie16 ALIAS Pixie16)
 
 # ---- Create an installable target ----
 # this allows users to install and find the library via `find_package()`.
